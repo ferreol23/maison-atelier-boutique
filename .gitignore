@@ -1,0 +1,8 @@
+# Captures d'écran de sites de marques : usage interne uniquement, pas à publier
+references/*.jpg
+references/*.png
+
+# Fichiers système
+Thumbs.db
+Desktop.ini
+.DS_Store

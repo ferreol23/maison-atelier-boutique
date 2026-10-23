@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Maison Atelier — L'allure parisienne</title>
+  <meta name="description" content="Maison Atelier : vêtements contemporains, matières choisies et coupes essentielles. Collection Automne-Hiver 2026. Commandez en quelques clics sur WhatsApp.">
+  <meta name="theme-color" content="#0c0a09">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Aller au contenu</a>
+
+  <!-- En-tête fixe : bandeau + barre (transparente sur le hero, opaque ensuite) -->
+  <div class="masthead" id="masthead">
+    <p class="promo">Livraison offerte dès 80 €<span class="promo-extra"> <span aria-hidden="true">·</span> Commande simple sur WhatsApp</span></p>
+    <header class="header">
+      <div class="header-side">
+        <button class="menu-btn" id="open-menu" type="button" aria-controls="menu-panel" aria-expanded="false">
+          <span class="menu-lines" aria-hidden="true"></span>
+          <span class="menu-label">Menu</span>
+        </button>
+        <button class="icon-btn" id="open-search" type="button" aria-label="Rechercher (Ctrl + K)" aria-controls="search-panel">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+
+      <a class="wordmark" href="#main" aria-label="Maison Atelier, accueil">Maison Atelier</a>
+
+      <div class="header-side header-side--end">
+        <button class="icon-btn" id="open-wishlist" type="button" aria-label="Favoris" aria-controls="wishlist-drawer">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.6a4.3 4.3 0 0 1 7.5 2.7c0 5.6-7.5 10.2-7.5 10.2z" stroke-linejoin="round"/></svg>
+          <span class="count" id="wishlist-count" hidden>0</span>
+        </button>
+        <button class="icon-btn" id="open-cart" type="button" aria-label="Panier" aria-controls="cart-drawer">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1.2 11.3a2 2 0 0 1-2 1.7H8.2a2 2 0 0 1-2-1.7z" stroke-linejoin="round"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8" stroke-linecap="round"/></svg>
+          <span class="count" id="cart-count" hidden>0</span>
+        </button>
+      </div>
+    </header>
+  </div>
+
+  <main id="main">
+    <!-- 1. Hero plein écran -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-media" data-parallax>
+        <img src="https://images.unsplash.com/photo-1732210571848-1e673e7f1391?auto=format&fit=crop&w=1600&q=80"
+             srcset="https://images.unsplash.com/photo-1732210571848-1e673e7f1391?auto=format&fit=crop&w=800&q=80 800w,
+                     https://images.unsplash.com/photo-1732210571848-1e673e7f1391?auto=format&fit=crop&w=1600&q=80 1600w,
+                     https://images.unsplash.com/photo-1732210571848-1e673e7f1391?auto=format&fit=crop&w=2400&q=80 2400w"
+             sizes="100vw" width="1600" height="2400" fetchpriority="high"
+             alt="Une femme en trench beige devant un immeuble haussmannien">
+      </div>
+      <div class="hero-content">
+        <p class="eyebrow eyebrow--light" data-hero="eyebrow">Collection Automne-Hiver 2026</p>
+        <h1 id="hero-title" class="hero-title">L'allure parisienne</h1>
+        <div class="hero-links" data-hero="links">
+          <a class="u-link u-link--light" href="#collection" data-cat="femme">Découvrir la sélection Femme</a>
+          <a class="u-link u-link--light" href="#collection" data-cat="homme">Découvrir la sélection Homme</a>
+        </div>
+      </div>
+      <a class="scroll-cue" href="#manifesto" data-hero="cue">
+        <span>Défiler</span>
+        <span class="scroll-cue-line" aria-hidden="true"></span>
+      </a>
+    </section>
+
+    <!-- 2. Manifeste -->
+    <section class="manifesto" id="manifesto" aria-label="Notre manifeste">
+      <p class="manifesto-text" data-words>Des pièces pensées pour durer, des matières choisies avec soin et des coupes nettes. Un vestiaire essentiel, que l'on retrouve chaque matin avec plaisir.</p>
+      <a class="u-link" href="#collection" data-reveal>Explorer la collection</a>
+    </section>
+
+    <!-- 3. Univers en triptyque -->
+    <section class="triptych" aria-label="Les univers de la maison">
+      <a class="panel" href="#collection" data-goto="femme">
+        <span class="panel-media">
+          <img src="https://images.unsplash.com/photo-1550872199-63f4382fe925?auto=format&fit=crop&w=1000&q=80"
+               srcset="https://images.unsplash.com/photo-1550872199-63f4382fe925?auto=format&fit=crop&w=600&q=80 600w,
+                       https://images.unsplash.com/photo-1550872199-63f4382fe925?auto=format&fit=crop&w=1000&q=80 1000w"
+               sizes="(max-width: 900px) 100vw, 34vw" width="1000" height="860" loading="lazy"
+               alt="Une femme en manteau croisé camel sur une robe rouge">
+        </span>
+        <span class="panel-label">
+          <span class="tag">Femme</span>
+          <span class="panel-cta">Découvrir <span aria-hidden="true">→</span></span>
+        </span>
+      </a>
+      <a class="panel" href="#collection" data-goto="homme">
+        <span class="panel-media">
+          <img src="https://images.unsplash.com/photo-1519831296458-9341fc9d2b18?auto=format&fit=crop&w=1000&q=80"
+               srcset="https://images.unsplash.com/photo-1519831296458-9341fc9d2b18?auto=format&fit=crop&w=600&q=80 600w,
+                       https://images.unsplash.com/photo-1519831296458-9341fc9d2b18?auto=format&fit=crop&w=1000&q=80 1000w"
+               sizes="(max-width: 900px) 100vw, 34vw" width="1000" height="1500" loading="lazy"
+               alt="Deux hommes en maille dans un champ de blé">
+        </span>
+        <span class="panel-label">
+          <span class="tag">Homme</span>
+          <span class="panel-cta">Découvrir <span aria-hidden="true">→</span></span>
+        </span>
+      </a>
+      <a class="panel" href="#collection" data-goto="accessoires">
+        <span class="panel-media">
+          <img src="https://images.unsplash.com/photo-1589363358751-ab05797e5629?auto=format&fit=crop&w=1000&q=80"
+               srcset="https://images.unsplash.com/photo-1589363358751-ab05797e5629?auto=format&fit=crop&w=600&q=80 600w,
+                       https://images.unsplash.com/photo-1589363358751-ab05797e5629?auto=format&fit=crop&w=1000&q=80 1000w"
+               sizes="(max-width: 900px) 100vw, 34vw" width="1000" height="1778" loading="lazy"
+               alt="Un sac à main argenté posé sur un manteau camel">
+        </span>
+        <span class="panel-label">
+          <span class="tag">Accessoires</span>
+          <span class="panel-cta">Découvrir <span aria-hidden="true">→</span></span>
+        </span>
+      </a>
+    </section>
+
+    <!-- 4. Nouveautés : carrousel horizontal (épinglé au défilement sur grand écran) -->
+    <section class="news" id="news" aria-labelledby="news-title">
+      <div class="news-inner">
+        <div class="news-head">
+          <h2 id="news-title" class="display-caps" data-reveal>Nouveautés</h2>
+          <a class="u-link" href="#collection" data-cat="nouveautes" data-reveal>Tout voir</a>
+        </div>
+        <div class="news-viewport" id="news-viewport" tabindex="0" aria-label="Carrousel des nouveautés, faites défiler horizontalement">
+          <ul class="news-track" id="news-track"></ul>
+        </div>
+        <div class="news-progress" aria-hidden="true"><span id="news-progress-bar"></span></div>
+      </div>
+    </section>
+
+    <!-- 5. Campagne plein cadre -->
+    <section class="campaign" aria-labelledby="campaign-title">
+      <div class="campaign-media" data-parallax>
+        <img src="https://images.unsplash.com/photo-1544246108-14b45872b02d?auto=format&fit=crop&w=1600&q=80"
+             srcset="https://images.unsplash.com/photo-1544246108-14b45872b02d?auto=format&fit=crop&w=800&q=80 800w,
+                     https://images.unsplash.com/photo-1544246108-14b45872b02d?auto=format&fit=crop&w=1600&q=80 1600w,
+                     https://images.unsplash.com/photo-1544246108-14b45872b02d?auto=format&fit=crop&w=2400&q=80 2400w"
+             sizes="100vw" width="1600" height="1067" loading="lazy"
+             alt="Une femme en long manteau camel devant une façade de briques sombres">
+      </div>
+      <div class="campaign-caption">
+        <p class="eyebrow eyebrow--light" data-reveal>Pièce signature</p>
+        <h2 id="campaign-title" class="campaign-title" data-reveal>Le trench, réinventé</h2>
+        <button type="button" class="u-link u-link--light" data-view="1" data-reveal>Découvrir la pièce</button>
+      </div>
+    </section>
+
+    <!-- 6. Duo de cartes -->
+    <section class="duo" aria-label="Sélections du moment">
+      <article class="duo-card" data-reveal>
+        <img src="https://images.unsplash.com/photo-1574201635302-388dd92a4c3f?auto=format&fit=crop&w=1100&q=80"
+             srcset="https://images.unsplash.com/photo-1574201635302-388dd92a4c3f?auto=format&fit=crop&w=700&q=80 700w,
+                     https://images.unsplash.com/photo-1574201635302-388dd92a4c3f?auto=format&fit=crop&w=1100&q=80 1100w"
+             sizes="(max-width: 900px) 100vw, 50vw" width="1100" height="1375" loading="lazy"
+             alt="Une personne qui enfile un pull en grosse maille écrue">
+        <div class="duo-text">
+          <p class="eyebrow eyebrow--light">Mailles</p>
+          <h3>La douceur, en hiver</h3>
+          <a class="pill" href="#collection" data-cat="mailles">Acheter</a>
+        </div>
+      </article>
+      <article class="duo-card" data-reveal>
+        <img src="https://images.unsplash.com/photo-1592327877233-90b9bfd92e48?auto=format&fit=crop&w=1100&q=80"
+             srcset="https://images.unsplash.com/photo-1592327877233-90b9bfd92e48?auto=format&fit=crop&w=700&q=80 700w,
+                     https://images.unsplash.com/photo-1592327877233-90b9bfd92e48?auto=format&fit=crop&w=1100&q=80 1100w"
+             sizes="(max-width: 900px) 100vw, 50vw" width="1100" height="1467" loading="lazy"
+             alt="Une femme en trench beige marchant au soleil">
+        <div class="duo-text">
+          <p class="eyebrow eyebrow--light">Manteaux &amp; vestes</p>
+          <h3>Les pièces qui structurent</h3>
+          <a class="pill" href="#collection" data-cat="manteaux">Acheter</a>
+        </div>
+      </article>
+    </section>
+
+    <!-- 7. Collection complète -->
+    <section class="collection" id="collection" aria-labelledby="collection-title">
+      <div class="collection-head">
+        <h2 id="collection-title" class="display-caps" data-reveal>La collection</h2>
+        <label class="sort">
+          <span class="sr-only">Trier les articles</span>
+          <select class="select" id="sort">
+            <option value="">Trier : sélection</option>
+            <option value="asc">Prix croissant</option>
+            <option value="desc">Prix décroissant</option>
+            <option value="name">Nom A → Z</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="toolbar" id="filters" role="group" aria-label="Filtrer par catégorie">
+        <button type="button" class="chip" data-cat="tout" aria-pressed="true">Tout</button>
+        <button type="button" class="chip" data-cat="nouveautes" aria-pressed="false">Nouveautés</button>
+        <button type="button" class="chip chip--sale" data-cat="promos" aria-pressed="false">Soldes</button>
+        <button type="button" class="chip" data-cat="femme" aria-pressed="false">Femme</button>
+        <button type="button" class="chip" data-cat="homme" aria-pressed="false">Homme</button>
+        <button type="button" class="chip" data-cat="enfant" aria-pressed="false">Enfant</button>
+        <button type="button" class="chip" data-cat="chaussures" aria-pressed="false">Chaussures</button>
+        <button type="button" class="chip" data-cat="accessoires" aria-pressed="false">Accessoires</button>
+        <span class="result-count" id="result-count" aria-live="polite"></span>
+      </div>
+
+      <div class="grid" id="grid"></div>
+    </section>
+
+    <!-- 8. Services -->
+    <section class="services" aria-label="Nos services">
+      <ul class="services-list">
+        <li data-reveal>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 7h12v9H2zM14 10h4l3 3v3h-7z" stroke-linejoin="round"/><circle cx="6" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>
+          <h3>Livraison offerte</h3>
+          <p>Dès 80 € d'achat.</p>
+        </li>
+        <li data-reveal>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 19z" stroke-linejoin="round"/><path d="M9 11h6M9 14h4" stroke-linecap="round"/></svg>
+          <h3>Commande WhatsApp</h3>
+          <p>Panier envoyé en un clic, confirmation rapide.</p>
+        </li>
+        <li data-reveal>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h13l-3-3M20 16H7l3 3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <h3>Échange de taille</h3>
+          <p>Simple et rapide si la taille ne convient pas.</p>
+        </li>
+        <li data-reveal>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="14" width="4" height="6" rx="1"/><rect x="17" y="14" width="4" height="6" rx="1"/></svg>
+          <h3>Conseil personnalisé</h3>
+          <p>Une question de taille ou de style ? Écrivez-nous.</p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- 9. Newsletter -->
+    <section class="newsletter" aria-labelledby="news-letter-title">
+      <div class="newsletter-media">
+        <img src="https://images.unsplash.com/photo-1603189343302-e603f7add05a?auto=format&fit=crop&w=1200&q=80"
+             srcset="https://images.unsplash.com/photo-1603189343302-e603f7add05a?auto=format&fit=crop&w=700&q=80 700w,
+                     https://images.unsplash.com/photo-1603189343302-e603f7add05a?auto=format&fit=crop&w=1200&q=80 1200w"
+             sizes="(max-width: 900px) 100vw, 50vw" width="1200" height="900" loading="lazy"
+             alt="Silhouette en veste noire ample sur fond blanc">
+      </div>
+      <div class="newsletter-body">
+        <p class="eyebrow eyebrow--gold" data-reveal>Lettre d'atelier</p>
+        <h2 id="news-letter-title" data-reveal>Rejoignez le cercle.</h2>
+        <p data-reveal>Nouveautés, ventes privées et éditos avant tout le monde, avec <strong>−10 %</strong> sur votre première commande.</p>
+        <form class="newsletter-form" id="newsletter-form" novalidate data-reveal>
+          <label for="news-email" class="sr-only">Adresse e-mail</label>
+          <input id="news-email" type="email" required autocomplete="email" placeholder="Votre adresse e-mail" aria-describedby="newsletter-note">
+          <button type="submit" class="pill pill--light">S'inscrire</button>
+        </form>
+        <p class="newsletter-note" id="newsletter-note" role="status" aria-live="polite"></p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Pied de page -->
+  <footer class="footer" id="contact">
+    <div class="footer-inner">
+      <p class="footer-wordmark" aria-hidden="true">Maison Atelier</p>
+      <div class="foot-grid">
+        <nav class="foot-col" aria-label="Boutique">
+          <h4>Boutique</h4>
+          <ul>
+            <li><a href="#collection" data-cat="nouveautes">Nouveautés</a></li>
+            <li><a href="#collection" data-cat="femme">Femme</a></li>
+            <li><a href="#collection" data-cat="homme">Homme</a></li>
+            <li><a href="#collection" data-cat="promos">Soldes</a></li>
+          </ul>
+        </nav>
+        <nav class="foot-col" aria-label="Services">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#" id="footer-size">Conseil taille</a></li>
+            <li><a href="#collection">Livraison &amp; échanges</a></li>
+          </ul>
+        </nav>
+        <div class="foot-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="#" id="footer-wa">WhatsApp</a></li>
+            <li><a href="mailto:bonjour@maison-atelier.fr">bonjour@maison-atelier.fr</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <p>© <span id="year"></span> Maison Atelier. Tous droits réservés.</p>
+        <p>Photographies : <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Overlay -->
+  <div class="overlay" id="overlay" hidden></div>
+
+  <!-- Menu plein écran -->
+  <div class="menu-panel" id="menu-panel" role="dialog" aria-modal="true" aria-label="Menu" aria-hidden="true">
+    <div class="menu-top">
+      <button type="button" class="menu-btn menu-btn--close" data-close aria-label="Fermer le menu">
+        <span class="menu-lines is-x" aria-hidden="true"></span>
+        <span class="menu-label">Fermer</span>
+      </button>
+    </div>
+    <nav class="menu-nav" aria-label="Navigation principale">
+      <a href="#collection" data-cat="nouveautes">Nouveautés</a>
+      <a href="#collection" data-cat="femme">Femme</a>
+      <a href="#collection" data-cat="homme">Homme</a>
+      <a href="#collection" data-cat="enfant">Enfant</a>
+      <a href="#collection" data-cat="chaussures">Chaussures</a>
+      <a href="#collection" data-cat="accessoires">Accessoires</a>
+      <a href="#collection" data-cat="promos" class="is-sale">Soldes</a>
+    </nav>
+    <div class="menu-foot">
+      <button type="button" class="u-link" id="menu-search">Rechercher une pièce</button>
+      <p>Une question ? <a class="u-link" href="#" id="menu-wa">Écrivez-nous sur WhatsApp</a></p>
+    </div>
+  </div>
+
+  <!-- Recherche -->
+  <div class="search-panel" id="search-panel" role="dialog" aria-modal="true" aria-label="Recherche" aria-hidden="true">
+    <div class="search-inner">
+      <label for="search-input" class="sr-only">Rechercher un article</label>
+      <input type="search" id="search-input" placeholder="Rechercher une pièce, une matière…" autocomplete="off">
+      <button type="button" class="icon-btn" data-close aria-label="Fermer la recherche">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="search-results" id="search-results" aria-live="polite"></div>
+  </div>
+
+  <!-- Panier -->
+  <aside class="drawer" id="cart-drawer" role="dialog" aria-modal="true" aria-labelledby="cart-title" aria-hidden="true">
+    <div class="drawer-head">
+      <h2 id="cart-title">Panier</h2>
+      <button type="button" class="icon-btn" data-close aria-label="Fermer le panier">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <ul class="drawer-list" id="cart-list"></ul>
+    <p class="drawer-empty" id="cart-empty">Votre panier est vide.<br><a href="#collection" class="u-link" data-close>Découvrir la collection</a></p>
+    <div class="drawer-foot">
+      <p class="row"><span>Sous-total</span><strong id="cart-subtotal">0,00 €</strong></p>
+      <p class="row muted"><span>Livraison</span><span id="cart-shipping">—</span></p>
+      <a class="btn btn-wa" id="checkout" href="#" target="_blank" rel="noopener" aria-disabled="true">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 19z" stroke-linejoin="round"/></svg>
+        Commander sur WhatsApp
+      </a>
+      <p class="center"><button type="button" class="u-link" id="clear-cart">Vider le panier</button></p>
+    </div>
+  </aside>
+
+  <!-- Favoris -->
+  <aside class="drawer" id="wishlist-drawer" role="dialog" aria-modal="true" aria-labelledby="wish-title" aria-hidden="true">
+    <div class="drawer-head">
+      <h2 id="wish-title">Favoris</h2>
+      <button type="button" class="icon-btn" data-close aria-label="Fermer les favoris">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <ul class="drawer-list" id="wishlist-list"></ul>
+    <p class="drawer-empty" id="wishlist-empty">Aucun favori pour l'instant.<br><a href="#collection" class="u-link" data-close>Explorer la collection</a></p>
+  </aside>
+
+  <!-- Vue rapide -->
+  <div class="modal" id="quickview" role="dialog" aria-modal="true" aria-labelledby="qv-name" aria-hidden="true">
+    <div class="modal-card">
+      <button type="button" class="icon-btn modal-close" data-close aria-label="Fermer">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke-linecap="round"/></svg>
+      </button>
+      <div class="qv-art" id="qv-art"></div>
+      <div class="qv-body">
+        <p class="qv-cat" id="qv-cat"></p>
+        <h2 class="qv-name" id="qv-name"></h2>
+        <p class="qv-price" id="qv-price"></p>
+        <p class="qv-desc">Pièce signature de la Maison Atelier. Matière douce, coupe soignée, finitions travaillées.</p>
+        <div class="qv-field">
+          <p class="qv-label" id="qv-color-label">Couleur</p>
+          <div class="qv-swatches" id="qv-swatches" role="group" aria-labelledby="qv-color-label"></div>
+        </div>
+        <div class="qv-field">
+          <p class="qv-label"><span id="qv-size-label">Taille</span> <a href="#" class="qv-guide" id="qv-guide">Besoin d'aide ?</a></p>
+          <div class="qv-sizes" id="qv-sizes" role="group" aria-labelledby="qv-size-label"></div>
+        </div>
+        <div class="qv-cta">
+          <button type="button" class="btn btn-primary" id="qv-add">Ajouter au panier</button>
+          <button type="button" class="btn btn-ghost" id="qv-like" aria-pressed="false">Ajouter aux favoris</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+  <!-- Logique de la boutique (fonctionne sans GSAP) -->
+  <script src="app.js"></script>
+  <!-- Animations GSAP (amélioration progressive) -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js" defer></script>
+  <script src="animations.js" defer></script>
+</body>
+</html>
