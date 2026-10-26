@@ -93,14 +93,27 @@ const SHAPES = {
   bag:     { d: "M48 82 H152 L162 184 H38 Z", extra: '<path d="M76 82 Q76 38 100 38 Q124 38 124 82" fill="none" stroke="COLOR" stroke-width="5"/><rect x="90" y="128" width="20" height="24" rx="2" fill="rgba(0,0,0,0.12)"/>' },
 };
 
-let svgSeq = 0;
+// Photo du produit (images/products/p01.webp…) ; si elle manque, le dessin prend le relais
 function art(product, color) {
+  return (
+    '<img class="art" src="images/products/p' + String(product.id).padStart(2, "0") + '.webp" alt="" ' +
+    'width="768" height="960" loading="lazy" decoding="async" ' +
+    'data-pid="' + product.id + '" data-color="' + (color || "") + '">'
+  );
+}
+document.addEventListener("error", e => {
+  const img = e.target;
+  if (img.tagName === "IMG" && img.dataset.pid) img.outerHTML = drawing(findProduct(img.dataset.pid), img.dataset.color);
+}, true);
+
+let svgSeq = 0;
+function drawing(product, color) {
   const col = color || product.colors[0];
   const shape = SHAPES[product.shape] || SHAPES.tshirt;
   const id = "g" + (++svgSeq);
   const extra = (shape.extra || "").replace(/COLOR/g, col);
   return (
-    '<svg viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true">' +
+    '<svg class="art" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true">' +
       "<defs>" +
         '<linearGradient id="' + id + 'b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f3f1ed"/><stop offset="1" stop-color="#e6e2da"/></linearGradient>' +
         '<linearGradient id="' + id + 'f" x1="0" y1="0" x2="1" y2="1">' +
