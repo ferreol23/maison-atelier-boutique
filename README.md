@@ -27,6 +27,15 @@ Ouvrir `index.html` dans un navigateur. Aucune installation n'est nécessaire. U
 ## Crédits
 
 - Photographies d'ambiance : [Unsplash](https://unsplash.com) (licence Unsplash).
-- Photos produits : générées par IA avec FLUX.1 Krea [dev] (Black Forest Labs) sur Hugging Face. Elles illustrent les articles, ce ne sont pas des photos de vrais stocks.
+- Photos produits : générées par IA, articles 1 à 19 avec FLUX.1 Krea [dev] sur Hugging Face, articles 20 à 34 avec FLUX.2 [klein] sur Cloudflare Workers AI (modèles Black Forest Labs). Elles illustrent les articles, ce ne sont pas des photos de vrais stocks.
+
+## Générer ou refaire une photo produit
+
+Les descriptions des photos sont dans `tools/prompts.py`. Pour refaire une photo, supprimez le fichier `images/products/pXX.webp` puis lancez :
+
+- Cloudflare (gratuit, environ 100 photos par jour) : `tools/.venv/Scripts/python tools/generate_cf.py XX`
+- Hugging Face (gratuit, environ 5 photos par jour) : `tools/.venv/Scripts/python tools/generate.py XX`
+
+Les clés ne sont jamais dans le dépôt : `tools/save-cloudflare-key.ps1` enregistre la clé Cloudflare dans votre dossier utilisateur.
 - Animations : [GSAP](https://gsap.com) 3.13 (ScrollTrigger, SplitText).
 - Polices : Cormorant et Montserrat (Google Fonts).
