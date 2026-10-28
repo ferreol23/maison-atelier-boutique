@@ -253,7 +253,11 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 500; line-
   letter-spacing: 0.22em;
   text-transform: uppercase;
   white-space: nowrap;
+  display: inline-flex; align-items: center; gap: 0.5em;
 }
+.logo-mark { width: 0.8em; height: 1em; flex: none; }
+.wordmark .logo-mark { width: 1.1em; height: 1.375em; }
+@media (max-width: 359px) { .wordmark .logo-mark { display: none; } }
 
 /* ---------- Hero ---------- */
 .hero {
@@ -596,13 +600,14 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 500; line-
   max-width: none;
   margin-bottom: clamp(40px, 6vw, 72px);
   font-family: var(--font-display);
-  font-size: clamp(2rem, 9.5vw, 9rem);
+  font-size: clamp(1.8rem, 8.5vw, 8.5rem);
   font-weight: 500;
   letter-spacing: 0.06em;
   line-height: 0.9;
   text-transform: uppercase;
   color: #efe6cf;
   white-space: nowrap;
+  display: flex; align-items: center; gap: 0.25em;
 }
 .foot-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-bottom: 56px; }
 .foot-col h4 { margin-bottom: 16px; color: #fff; font-size: var(--fs-xs); font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; }
