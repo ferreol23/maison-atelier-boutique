@@ -615,6 +615,7 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 500; line-
   color: var(--ink-400); font-size: var(--fs-xs);
 }
 .foot-bottom a { text-decoration: underline; text-underline-offset: 3px; }
+.demo-note { text-align: center; color: var(--ink-400); font-size: var(--fs-xs); }
 
 /* ---------- Calques ---------- */
 .overlay {
