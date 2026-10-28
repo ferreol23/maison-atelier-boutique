@@ -1,0 +1,8 @@
+# Fichiers que Cloudflare ne doit pas mettre en ligne
+.git
+.assetsignore
+.gitignore
+.nojekyll
+README.md
+tools
+references
