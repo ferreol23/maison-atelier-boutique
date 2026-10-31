@@ -736,6 +736,11 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 500; line-
 .modal-close { position: absolute; top: 12px; right: 12px; z-index: 2; background: rgba(255,255,255,0.85); }
 .qv-art { position: relative; min-height: 440px; background: var(--ink-100); }
 .qv-art .art { position: absolute; inset: 0; }
+.qv-photo-note {
+  position: absolute; left: 12px; bottom: 12px;
+  padding: 4px 10px; border-radius: 999px;
+  background: rgba(255, 255, 255, 0.9); color: var(--ink-700); font-size: var(--fs-xs);
+}
 .qv-body { padding: 48px 40px; overflow-y: auto; }
 .qv-cat { font-size: var(--fs-xs); letter-spacing: 0.2em; text-transform: uppercase; color: var(--fg-muted); margin-bottom: 8px; }
 .qv-name { font-size: clamp(1.8rem, 3vw, 2.4rem); margin-bottom: 10px; }

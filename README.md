@@ -19,7 +19,7 @@ Ouvrir `index.html` dans un navigateur. Aucune installation n'est nécessaire. U
 
 ## À personnaliser (en haut de `app.js`)
 
-- `WHATSAPP_NUMBER` : votre numéro au format international, sans `+` ni espaces. Le numéro actuel est factice.
+- `WHATSAPP_NUMBER` : votre numéro au format international, sans `+` ni espaces. Laissé vide (site de démonstration), WhatsApp s'ouvre et demande à qui envoyer la commande.
 - `SHOP_NAME` : le nom de la boutique.
 - `PRODUCTS` : la liste des articles (nom, catégorie, prix, couleurs).
 - Photos : pour changer la photo d'un article, remplacez le fichier `images/products/pXX.webp` (format portrait 4:5, par exemple 768 × 960 px).

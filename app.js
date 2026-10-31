@@ -4,7 +4,9 @@
 // =========================================================
 
 // ⬇⬇⬇ À PERSONNALISER ⬇⬇⬇
-const WHATSAPP_NUMBER = "33600000000"; // format international, sans + ni espaces
+// Numéro au format international, sans + ni espaces (ex. "33612345678").
+// Vide = site de démonstration : WhatsApp s'ouvre et demande à qui envoyer le message.
+const WHATSAPP_NUMBER = "";
 const SHOP_NAME = "Maison Atelier";
 const SHIPPING_FREE = 80;              // livraison offerte à partir de ce montant (€)
 
@@ -54,6 +56,21 @@ const PRODUCTS = [
   { id: 34, name: "Pochette matelassée",        category: "accessoires", price: 149, shape: "bag",    colors: ["#2a2621", "#efe4d0", "#9c3540"] },
 ];
 // ⬆⬆⬆ Fin de la personnalisation ⬆⬆⬆
+
+// Nom affiché de chaque couleur du catalogue
+const COLOR_NAMES = {
+  "#2a2621": "Noir", "#1a1813": "Noir", "#262626": "Noir", "#1f1b17": "Noir",
+  "#2d2a22": "Anthracite", "#8f9096": "Gris", "#9a9ca3": "Gris chiné",
+  "#f5efe4": "Blanc cassé", "#efe4d0": "Écru", "#d9c9a8": "Beige", "#d8c3a0": "Naturel",
+  "#c9ae85": "Sable", "#c9a978": "Camel", "#b89a68": "Camel", "#876e4a": "Caramel",
+  "#8a5a3c": "Cognac", "#796456": "Moka", "#7a6a4f": "Taupe", "#5a4e3a": "Brun",
+  "#9c3540": "Bordeaux", "#7a2e3b": "Lie-de-vin", "#b5443c": "Brique", "#d4584a": "Corail",
+  "#f0b6c6": "Rose poudré", "#f0cd4f": "Jaune", "#c48c22": "Moutarde", "#d1a22e": "Moutarde",
+  "#a8b99a": "Sauge", "#7d8f6b": "Olive", "#6b8a4f": "Vert mousse",
+  "#8dbbe0": "Bleu ciel", "#8a9bb0": "Bleu oxford", "#5e7696": "Bleu délavé",
+  "#3a4a62": "Bleu brut", "#3d5273": "Indigo", "#2f4468": "Bleu marine",
+};
+const colorName = hex => COLOR_NAMES[hex] || "Coloris unique";
 
 const CATEGORY_LABELS = {
   femme: "Femme", homme: "Homme", enfant: "Enfant", chaussures: "Chaussures", accessoires: "Accessoires",
@@ -194,7 +211,7 @@ function cardHTML(p) {
         '<h3 class="card-name">' + esc(p.name) + "</h3>" +
         '<p class="card-cat">' + CATEGORY_LABELS[p.category] + "</p>" +
         '<div class="swatches" aria-label="' + p.colors.length + (p.colors.length > 1 ? " couleurs" : " couleur") + '">' +
-          p.colors.map(c => '<span class="swatch" style="background:' + c + '"></span>').join("") +
+          p.colors.map(c => '<span class="swatch" style="background:' + c + '" title="' + colorName(c) + '"></span>').join("") +
         "</div>" +
       "</div>" +
     "</article>"
@@ -282,7 +299,7 @@ function renderCart() {
         '<div class="drawer-thumb">' + art(p, l.color) + "</div>" +
         '<div class="drawer-info">' +
           '<p class="name">' + esc(p.name) + "</p>" +
-          '<p class="meta">Taille ' + esc(l.size) + " · " + euro(p.price) + "</p>" +
+          '<p class="meta">' + colorName(l.color) + " · Taille " + esc(l.size) + " · " + euro(p.price) + "</p>" +
           '<div class="qty">' +
             '<button type="button" data-qty="-1" data-i="' + i + '" aria-label="Retirer un ' + esc(p.name) + '">−</button>' +
             '<span aria-label="Quantité">' + l.qty + "</span>" +
@@ -306,7 +323,7 @@ function renderCart() {
     let text = "Bonjour " + SHOP_NAME + ", je souhaite commander :\n\n";
     cart.forEach(l => {
       const p = findProduct(l.id);
-      text += "• " + l.qty + " × " + p.name + " (taille " + l.size + ") : " + euro(p.price * l.qty) + "\n";
+      text += "• " + l.qty + " × " + p.name + " (" + colorName(l.color).toLowerCase() + ", taille " + l.size + ") : " + euro(p.price * l.qty) + "\n";
     });
     text += "\nSous-total : " + euro(subtotal) + "\n\nMerci de me confirmer la disponibilité et la livraison.";
     checkout.href = waLink(text);
@@ -431,9 +448,9 @@ function openQuickview(id) {
   $("#qv-cat").textContent = CATEGORY_LABELS[p.category];
   $("#qv-name").textContent = p.name;
   $("#qv-price").innerHTML = euro(p.price) + (p.oldPrice ? '<span class="old"><span class="sr-only">au lieu de </span>' + euro(p.oldPrice) + "</span>" : "");
-  $("#qv-art").innerHTML = art(p, qv.color);
+  showQvColor();
   $("#qv-swatches").innerHTML = p.colors.map((c, i) =>
-    '<button type="button" class="qv-swatch" data-color="' + c + '" style="background:' + c + '" aria-pressed="' + (i === 0) + '" aria-label="Couleur ' + (i + 1) + '"></button>'
+    '<button type="button" class="qv-swatch" data-color="' + c + '" style="background:' + c + '" aria-pressed="' + (i === 0) + '" aria-label="' + colorName(c) + '" title="' + colorName(c) + '"></button>'
   ).join("");
   $("#qv-sizes").innerHTML = sizesFor(p).map((s, i) =>
     '<button type="button" class="qv-size" data-size="' + s + '" aria-pressed="' + (i === 0) + '">' + s + "</button>"
@@ -441,6 +458,15 @@ function openQuickview(id) {
   setWaLink($("#qv-guide"), "Bonjour, j'hésite sur la taille pour : " + p.name + ". Pouvez-vous me conseiller ?");
   syncQvLike();
   open(quickview, $("#qv-add"));
+}
+
+// La photo montre toujours le premier coloris : on le précise quand un autre est choisi
+function showQvColor() {
+  const p = qv.product;
+  const first = p.colors[0];
+  $("#qv-color-label").textContent = "Couleur : " + colorName(qv.color);
+  $("#qv-art").innerHTML = art(p, qv.color) +
+    (qv.color !== first ? '<span class="qv-photo-note">Photo : coloris ' + colorName(first).toLowerCase() + "</span>" : "");
 }
 
 function syncQvLike() {
@@ -463,13 +489,15 @@ function openSearch() {
 }
 
 function renderSearch() {
-  const q = searchInput.value.trim().toLowerCase();
+  const q = plain(searchInput.value.trim());
   const box = $("#search-results");
   if (!q) {
     box.innerHTML = '<p class="no-result" style="padding:24px 0">Tapez pour rechercher parmi ' + PRODUCTS.length + " pièces.</p>";
     return;
   }
-  const hits = PRODUCTS.filter(p => (p.name + " " + CATEGORY_LABELS[p.category]).toLowerCase().includes(q)).slice(0, 8);
+  const hits = PRODUCTS.filter(p =>
+    plain(p.name + " " + CATEGORY_LABELS[p.category] + " " + p.colors.map(colorName).join(" ")).includes(q)
+  ).slice(0, 8);
   box.innerHTML = hits.length
     ? hits.map(p =>
         '<button type="button" class="search-row" data-view="' + p.id + '">' +
@@ -477,7 +505,12 @@ function renderSearch() {
           '<span><span class="card-name" style="display:block">' + esc(p.name) + '</span><span class="card-cat">' + CATEGORY_LABELS[p.category] + "</span></span>" +
           "<strong>" + euro(p.price) + "</strong>" +
         "</button>").join("")
-    : '<p class="no-result" style="padding:24px 0">Aucun résultat pour « ' + esc(q) + " ».</p>";
+    : '<p class="no-result" style="padding:24px 0">Aucun résultat pour « ' + esc(searchInput.value.trim()) + " ».</p>";
+}
+
+// Minuscules sans accents : « echarpe » trouve « Écharpe »
+function plain(text) {
+  return text.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
 }
 
 // ---------- Divers ----------
@@ -562,7 +595,7 @@ $("#qv-swatches").addEventListener("click", e => {
   if (!b) return;
   qv.color = b.dataset.color;
   pick("#qv-swatches", b);
-  $("#qv-art").innerHTML = art(qv.product, qv.color);
+  showQvColor();
 });
 $("#qv-sizes").addEventListener("click", e => {
   const b = e.target.closest("[data-size]");
