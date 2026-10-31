@@ -258,6 +258,13 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 500; line-
 .logo-mark { width: 0.8em; height: 1em; flex: none; }
 .wordmark .logo-mark { width: 1.1em; height: 1.375em; }
 @media (max-width: 359px) { .wordmark .logo-mark { display: none; } }
+/* Très petits téléphones : l'en-tête doit tenir sans déborder */
+@media (max-width: 374px) {
+  .header { padding-inline: 12px; }
+  .header .icon-btn { width: 40px; height: 40px; }
+  .header .menu-btn { min-height: 40px; padding-right: 8px; }
+  .wordmark { letter-spacing: 0.08em; }
+}
 
 /* ---------- Hero ---------- */
 .hero {
@@ -781,7 +788,7 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 500; line-
   .triptych { grid-template-columns: 1fr; height: auto; }
   .panel { height: 72vh; min-height: 420px; }
   .duo { grid-template-columns: 1fr; }
-  .newsletter { grid-template-columns: 1fr; }
+  .newsletter { grid-template-columns: minmax(0, 1fr); }
   .newsletter-media { min-height: 320px; }
   .modal-card { grid-template-columns: 1fr; }
 }

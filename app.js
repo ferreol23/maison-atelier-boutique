@@ -422,6 +422,17 @@ function canFocus(el) {
     : el.offsetParent !== null;
 }
 
+// Le panier et les favoris sont redessinés à chaque clic : on remet le focus clavier
+// sur le bouton équivalent (même rang), sinon sur le premier élément du tiroir
+function refocusAfter(btn, selector, update) {
+  const layer = btn.closest(".drawer");
+  const index = layer ? $$(selector, layer).indexOf(btn) : -1;
+  update();
+  if (!layer || document.activeElement !== document.body) return;
+  const same = $$(selector, layer)[index];
+  (same || focusables(layer)[0] || layer).focus({ preventScroll: true });
+}
+
 document.addEventListener("keydown", e => {
   if (e.key === "Escape" && openLayer) { close(); return; }
   if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k") { e.preventDefault(); openSearch(); return; }
@@ -555,13 +566,19 @@ document.addEventListener("click", e => {
   if (view) { e.preventDefault(); openQuickview(view.dataset.view); return; }
 
   const unwish = t.closest("[data-unwish]");
-  if (unwish) { toggleWish(unwish.dataset.unwish); return; }
+  if (unwish) { refocusAfter(unwish, "[data-unwish]", () => toggleWish(unwish.dataset.unwish)); return; }
 
   const qty = t.closest("[data-qty]");
-  if (qty) { updateQty(Number(qty.dataset.i), Number(qty.dataset.qty)); return; }
+  if (qty) {
+    refocusAfter(qty, '[data-qty="' + qty.dataset.qty + '"]', () => updateQty(Number(qty.dataset.i), Number(qty.dataset.qty)));
+    return;
+  }
 
   const remove = t.closest("[data-remove]");
-  if (remove) { cart.splice(Number(remove.dataset.remove), 1); save(CART_KEY, cart); renderCart(); return; }
+  if (remove) {
+    refocusAfter(remove, "[data-remove]", () => { cart.splice(Number(remove.dataset.remove), 1); save(CART_KEY, cart); renderCart(); });
+    return;
+  }
 
   const cat = t.closest("[data-cat], [data-goto]");
   if (cat) {
